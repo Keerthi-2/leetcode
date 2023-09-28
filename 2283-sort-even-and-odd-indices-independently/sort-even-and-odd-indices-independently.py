@@ -10,8 +10,9 @@ class Solution:
             else:
                 even.append(nums[i])
                 
-        odd.sort(reverse=True)
+        odd.sort()
         even.sort()
+        o=len(odd)-1
         
         for i in range(len(nums)):
             if i%2==0:
@@ -19,7 +20,7 @@ class Solution:
                 e+=1
             else:
                 nums[i]=odd[o]
-                o+=1
+                o-=1
         return nums
                 
         
