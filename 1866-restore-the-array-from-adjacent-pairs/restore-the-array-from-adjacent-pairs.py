@@ -18,14 +18,14 @@ class Solution:
         
         def dfs(root,prev):
             ans.append(root)
-            vis.add(root)
+         #   vis.add(root)
             for neigh in d[root]:
-                if neigh not in vis:
+                if neigh!=prev:
                     dfs(neigh,root)
 
 
 
-        vis=set()
+       # vis=set()
         ans=[]
         dfs(root,None)
         return ans
