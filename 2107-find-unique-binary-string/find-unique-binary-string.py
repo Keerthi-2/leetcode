@@ -1,20 +1,18 @@
 class Solution:
     def findDifferentBinaryString(self, nums: List[str]) -> str:
+        
         def generate(curr):
-            if len(curr) == n:
+            if len(curr)==len(nums):
                 if curr not in nums:
                     return curr
                 
                 return ""
             
-            add_zero = generate(curr + "0")
-            if add_zero:
-                return add_zero
+            zero=generate(curr+"0")
+            if zero:
+                return zero
+            return generate(curr+"1")
 
-            return generate(curr + "1")
+        nums=set(nums)
 
-        n = len(nums)
-        nums = set(nums)
         return generate("")
-
-        
