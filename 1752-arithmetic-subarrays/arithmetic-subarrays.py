@@ -13,7 +13,7 @@ class Solution:
             cur.sort()
             ans=0
             length=len(cur)-1
-            print(cur)
+          
             p=cur[1]-cur[0]
             j=1
             while(j<len(cur) and (cur[j]-cur[j-1])==p):
@@ -23,7 +23,7 @@ class Solution:
                 #     ans=max(ans,res)
             
             j=j-1
-            print(j,len(cur)-1)
+           
             if j==len(cur)-1:
                 res1.append(True)
             else:
