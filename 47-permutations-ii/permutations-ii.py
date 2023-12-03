@@ -9,6 +9,8 @@ class Solution:
                 return
             
             for j in range(i, len(nums)):
+                if i!=j and nums[j]==nums[j-1]:
+                    continue
                 nums[i], nums[j] = nums[j], nums[i]
                 recur(nums, i + 1)
                 nums[i], nums[j] = nums[j], nums[i]
