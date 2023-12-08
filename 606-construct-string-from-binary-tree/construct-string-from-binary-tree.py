@@ -11,17 +11,20 @@ class Solution:
         if root is None:
           return
         res.append(str(root.val))
-        if root.left is None and root.right is None:
-          return
-        
-        res.append('(')
-        dfs(root.left)
-        res.append(')')
-
-        if root.right:
+        # if root.left is None and root.right is None:
+        #   return
+        if root.left is not None or root.right is not None:
+          
           res.append('(')
-          dfs(root.right)
+          dfs(root.left)
           res.append(')')
+
+          if root.right:
+            res.append('(')
+            dfs(root.right)
+            res.append(')')
+        
+        
 
       res=[]
       dfs(root)
