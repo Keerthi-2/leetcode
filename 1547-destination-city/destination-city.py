@@ -2,13 +2,11 @@ class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
 
         d={}
-        nodes=set()
+        
         for i in range(len(paths)):
             s=paths[i][0]
             j=paths[i][1]
-            print(s,j)
-            nodes.add(s)
-            nodes.add(j)
+           
             if j in d:
                 d[j]+=1
             else:
