@@ -18,7 +18,7 @@ return true;
 } else if (event1Start <= event2End && event1Start >= event2Start) {
 
 return true;
-   //( (2,4) (1,3)
+   //( (2,4) (1,3)    /  (2,4)  (1,3)
 }
 
 return false;
