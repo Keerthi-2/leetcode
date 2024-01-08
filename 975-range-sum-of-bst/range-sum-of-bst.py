@@ -5,19 +5,22 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    ans=0
+    
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
 
 
         def inorder(root):
             
             if root is None:
-                return 
-            inorder(root.left)
+                return 0
+            current=0
             if low<=root.val<=high:
-                self.ans+=root.val
-            inorder(root.right)
+                current=root.val
+            l=inorder(root.left)
+            
+            r=inorder(root.right)
+            return current+l+r
 
-        inorder(root)
-        return self.ans
+        return inorder(root)
+      
         
