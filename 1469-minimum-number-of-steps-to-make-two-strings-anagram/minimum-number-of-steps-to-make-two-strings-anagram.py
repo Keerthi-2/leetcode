@@ -4,10 +4,10 @@ class Solution:
         count_t=[0]*26
         count_s=[0]*26
 
-        for i in s:
+        for i in t:
             count_s[ord(i)-97]+=1
         
-        for i in t:
+        for i in s:
             count_s[ord(i)-97]-=1
         
         ans=0
