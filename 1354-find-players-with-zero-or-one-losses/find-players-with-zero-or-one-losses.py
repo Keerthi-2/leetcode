@@ -1,28 +1,19 @@
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        d={}
-        min_node=10**9
-        max_node=0
-        for w,l in matches:
-            if l in d:
-                d[l].append(w)
+        losses = [0] * 100001
+
+        for winner, loser in matches:
+            if losses[winner] == 0:
+                losses[winner] = -1
+
+            if losses[loser] == -1:
+                losses[loser] = 1
             else:
-                d[l]=[w]
-            if w not in d:
-                d[w]=[]
-        print(d)
-        ans=[[],[]]
-        won=[]
-        one=[]
-        
-        for i in d:
-            if len(d[i])==0:
-                ans[0].append(i)
-            if len(d[i])==1:
-                ans[1].append(i)
-            
-        ans[0].sort()
-        ans[1].sort() 
-        return ans
+                losses[loser] += 1
+
+        zero_loss = [i for i in range(1, 100001) if losses[i] == -1]
+        one_loss = [i for i in range(1, 100001) if losses[i] == 1]
+
+        return [zero_loss, one_loss]
 
         
