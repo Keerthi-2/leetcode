@@ -9,7 +9,7 @@ int sellingPrice = prices[prices.length-1];
 for (int i = prices.length - 1; i > -1; --i) {
 
 
-sellingPrice = Math.max(sellingPrice, prices[i]);
+
 int currProfit = sellingPrice - prices[i];
 
 
