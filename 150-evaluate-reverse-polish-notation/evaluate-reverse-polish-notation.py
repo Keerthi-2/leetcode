@@ -22,4 +22,4 @@ class Solution:
             else:
                 i=int(i)
                 l.append(i)
-        return l[0]
+        return l[-1]
