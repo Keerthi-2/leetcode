@@ -27,7 +27,7 @@ class Solution:
         
             start.next=l1
             
-        if(l2!=None):
+        else:
             start.next=l2
         
         return new.next
