@@ -8,8 +8,8 @@ class Solution:
                 d[i]=1
 
         distinct=len(d)
-        start=-1
-        end=-1
+        start=0
+        end=len(s)
         i=0
         ans=10**7
         for j in range(len(s)):
@@ -20,7 +20,7 @@ class Solution:
 
             while distinct==0:
 
-                if j-i+1<ans:
+                if j-i+1<end-start+1:
                     ans=j-i+1
                     start=i
                     end=j
@@ -30,5 +30,6 @@ class Solution:
                     if d[s[i]]==1:
                         distinct+=1
                 i+=1
+        if ans==10**7:
+            return ""
         return s[start:end+1]
-
