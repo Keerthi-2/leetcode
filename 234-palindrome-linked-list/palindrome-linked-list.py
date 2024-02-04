@@ -23,7 +23,10 @@ class Solution:
         last=prev
         first=head
 
-        while(first and last):
+        while(first):
+            
+            if first is None or last is None:
+                break
             if first.val!=last.val:
                 return False
             first=first.next
