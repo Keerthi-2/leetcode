@@ -18,11 +18,11 @@ class Solution:
                     flag=True
                 temp=temp.next
             if prev==None:  
-                
                 if flag:
                     head=temp
             else:
-                prev.next=temp
+                if prev.next!=temp:
+                    prev.next=temp
             if temp is None:
                 return head
             prev=temp
