@@ -8,9 +8,10 @@ class Solution:
             st=''
             for i in range(26):
                 if f[i]!=0:
-                    st+=str((chr(i+97))*f[i])
+                    st+=((chr(i+97))*f[i])
             return st
         d={}
+        print('a'*6)
         for i in strs:
             k=getstring(i)
             if k in d:
