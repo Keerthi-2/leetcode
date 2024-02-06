@@ -12,10 +12,11 @@ class Solution:
             fast=fast.next
         if fast is None:
             return head.next
-        while(fast.next!=None):
+        while(fast!=None):
+            prev=slow
             slow=slow.next
             fast=fast.next
         print(slow.val)
-        slow.next=slow.next.next
+        prev.next=slow.next
         return head
         
