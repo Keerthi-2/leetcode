@@ -10,8 +10,7 @@ class Solution:
         nex=head.next
         new=ListNode(0)
         ans=new
-        if head is None:
-            return head
+        
         temp=0
         while(nex):
             
