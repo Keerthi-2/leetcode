@@ -16,7 +16,7 @@ class Solution:
             s.append(head.val)
             head=head.next
         new=None
-        ans=new
+        
         carry=0
         while(len(s) or carry==1):
             if len(s)>0:
