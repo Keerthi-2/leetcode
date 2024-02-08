@@ -12,23 +12,23 @@ class Solution:
     def doubleIt(self, head: Optional[ListNode]) -> Optional[ListNode]:
         s=[]
         temp=head
-        while(head!=None):
-            s.append(head.val)
-            head=head.next
+        while(temp!=None):
+            s.append(temp.val)
+            temp=temp.next
         new=None
         
         carry=0
         while(len(s) or carry==1):
             if len(s)>0:
                 cur=s.pop()
-            else:
-                cur=0
+            
             cur=cur*2+carry
             print(carry,cur%10)
             new_node=ListNode(cur%10)
             carry=cur//10
             new_node.next=new
             new=new_node
+            cur=0
         
         return new
         
