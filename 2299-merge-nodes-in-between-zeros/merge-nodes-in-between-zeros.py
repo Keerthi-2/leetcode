@@ -14,14 +14,14 @@ class Solution:
         temp=0
         while(nex):
             
-            if nex.val!=0:
-                temp+=nex.val
+
                 
             if nex.val==0:
                 new_node=ListNode(temp)
                 new.next=new_node
                 new=new.next
                 temp=0
+            temp+=nex.val
             
             nex=nex.next
         return ans.next
