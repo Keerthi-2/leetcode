@@ -10,6 +10,8 @@ class Solution:
         end=head
         prev_left=left
         prev_right=right
+        if left==right:
+            return head
         
         while(left!=1):
             prev=slow
