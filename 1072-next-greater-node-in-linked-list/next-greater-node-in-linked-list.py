@@ -18,7 +18,7 @@ class Solution:
                 cur=st.pop()
                 ans[cur]=l[i]
             st.append(i)
-        print(ans)
+        
         
         return ans
         
