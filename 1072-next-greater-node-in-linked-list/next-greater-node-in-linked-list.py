@@ -13,7 +13,7 @@ class Solution:
         while(temp):
             ans.append(0)
             while(len(st)>0 and temp.val>st[-1][1]):
-                print(st)
+                
                 index,cur=st.pop()
                 ans[index]=temp.val
 
