@@ -8,9 +8,9 @@ class Solution:
             elif i=='C':
                 st.pop()
             elif i=='+':
-                if len(st)>=2:
-                    top=st[-1]+st[-2]
-                    st.append(top)
+                
+                top=st[-1]+st[-2]
+                st.append(top)
             else:
                 st.append(int(i))
         return sum(st)
