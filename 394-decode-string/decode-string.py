@@ -26,10 +26,10 @@ class Solution:
                 nums=nums[::-1]
                 ch=''.join(chars)
                 n=int(''.join(nums))
-                temp=''
                 
-                temp+=ch*n
-                st.append(temp)
+                
+                
+                st.append(ch*n)
         
         return ''.join(st)
 
