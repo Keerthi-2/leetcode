@@ -10,12 +10,9 @@ class Solution:
                 st.pop()
                 if len(st)>0:
                     st.pop()
-                
-            
+    
             i+=1
-        print(st)
-        if len(st)>0 and st[-1]=='../':
-            st.pop()
+        
         
         return len(st)
         
