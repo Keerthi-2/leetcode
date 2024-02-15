@@ -19,6 +19,7 @@ class Solution:
                         chars.append(st.pop())
                     
                 st.pop()
+                #  3 2 1       # in stack 3 2 1  1+2*10+     11+  31
                 while(len(st)>0 and st[-1].isdigit()):
                     nums.append(st.pop())
 
