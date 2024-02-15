@@ -4,14 +4,18 @@ class Solution:
         n=len(logs)
         i=0
         while(i<n):
-            while(len(st)>0 and i<n and logs[i]=="../"):
+            if logs[i]!="./":
+                st.append(logs[i])
+            while(len(st)>0 and i<n and st[-1]=="../"):
                 st.pop()
-                i+=1
-            if i<n and logs[i]!="./":
-                if logs[i]!="../": 
-                    st.append(logs[i])
+                if len(st)>0:
+                    st.pop()
+                
+            
             i+=1
         print(st)
+        if len(st)>0 and st[-1]=='../':
+            st.pop()
         
         return len(st)
         
