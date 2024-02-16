@@ -7,7 +7,7 @@ class Node:
 class BrowserHistory:
     def __init__(self, homepage: str):
         self.head=Node(homepage,None,None)
-        self.cur=self.head
+        self.cur=Node(homepage,None,None)
 
     def visit(self, url: str) -> None:
         new_node=Node(url,None,None)
