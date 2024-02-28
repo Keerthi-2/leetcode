@@ -6,20 +6,18 @@
 #         self.right = right
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
+        
+        def dfs(root,d):
+            if root is None:
+                return 
+            if d>self.depth:
+                self.ans=root.val
+                self.depth=d
+            dfs(root.left,d+1)
+            dfs(root.right,d+1)
+        self.ans=0
+        self.depth=-2
+        dfs(root,0)
 
-        if root is None:
-            return 0
-        
-        q=[root]
-        cur=root
-        while(len(q)):
-            cur=q.pop(0)
-                
-            if cur.right:
-                q.append(cur.right)
-            if cur.left:
-                q.append(cur.left)
-        
-        print(cur.val)
-        return cur.val
+        return self.ans
         
