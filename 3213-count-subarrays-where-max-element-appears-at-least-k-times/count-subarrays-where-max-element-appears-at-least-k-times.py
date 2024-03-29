@@ -1,16 +1,19 @@
 class Solution:
     def countSubarrays(self, nums: List[int], k: int) -> int:
-        max_element = max(nums)
-        indexes_of_max_elements = []
-        ans  = 0
-    
-        for index, element in enumerate(nums):
+        m=max(nums)
+        n=len(nums)
+        i=0
+        ans=(n*(n+1))//2
+        cur=0
+        max_ele_count=0
+        for j in range(n):
+            if nums[j]==m:
+                max_ele_count+=1
+            while(max_ele_count>=k):
+                if nums[i]==m:
+                    max_ele_count-=1
+                i+=1
+            cur+=j-i+1
         
-            if element == max_element:
-                indexes_of_max_elements.append(index)
-        
-            freq = len(indexes_of_max_elements)
-            if freq >= k:
-                ans += indexes_of_max_elements[-k] + 1
-    
-        return ans
+        return ans-cur
+            
