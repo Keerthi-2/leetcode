@@ -3,17 +3,18 @@ class Solution:
         m=max(nums)
         n=len(nums)
         i=0
-        ans=(n*(n+1))//2
+        ans=0
         cur=0
         max_ele_count=0
         for j in range(n):
             if nums[j]==m:
                 max_ele_count+=1
             while(max_ele_count>=k):
+                ans+=n-j
                 if nums[i]==m:
                     max_ele_count-=1
                 i+=1
-            cur+=j-i+1
+            
         
-        return ans-cur
+        return ans
             
