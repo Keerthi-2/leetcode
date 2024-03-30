@@ -10,12 +10,12 @@ class Solution:
                     d[nums[r]]+=1
                 else:
                     d[nums[r]]=1
-                while(l<=r and len(d)>k):
+                while(len(d)>k):
                     d[nums[l]]-=1
                     if d[nums[l]]==0:
                         d.pop(nums[l])
                     l+=1
-                ans+=r-l
+                ans+=r-l+1
                 
             return ans
         
