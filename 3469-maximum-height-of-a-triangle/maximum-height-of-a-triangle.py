@@ -5,7 +5,7 @@ class Solution:
             h=0
             i=1
             
-            for i in range(1,50):
+            for i in range(1,30):
                 if i%2==1:
                     if r>=i:
                         r-=i
