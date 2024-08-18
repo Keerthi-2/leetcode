@@ -27,11 +27,10 @@ class Solution:
         start=0
         
         while(end<n):
-            print(end,s,"neetered")
+            
             s-=nums[start]
-            print("after sub",s)
             s+=nums[end]
-            print("after add",s)
+            
             
             start+=1
             
@@ -39,7 +38,7 @@ class Solution:
                 res[res_ind]=-1
             else:
                 val=k/2*(nums[start]+nums[end])
-                print(val,s)
+                
                 if int(val)==s:
                     res[res_ind]=nums[end]
 
