@@ -1,40 +1,26 @@
 class Solution:
     def minimumDeleteSum(self, s1: str, s2: str) -> int:
         
-        d={}
-        def lcs(s1,s2,i,j):
-            
-            if i<0:
-                cur=0
-                while(j>=0):
-                    cur+=ord(s2[j])
-                    j-=1
-                
-                return cur
-            if j<0:
-                cur=0
-                while(i>=0):
-                    cur+=ord(s1[i])
-                    i-=1
-                
-                return cur
-             
-            if (i,j) in d:
-                return d[(i,j)]
-            
-            ans=0
-            
-            if s1[i]!=s2[j]:
-                
-                d[(i,j)]=min(ord(s2[j])+lcs(s1,s2,i,j-1),ord(s1[i])+lcs(s1,s2,i-1,j),ord(s1[i])+ord(s2[j])+lcs(s1,s2,i-1,j-1))
-            else:
-                
-                d[(i,j)]=lcs(s1,s2,i-1,j-1)
-            
-            return d[(i,j)]
-            
-           
-            
-                
-        return lcs(s1,s2,len(s1)-1,len(s2)-1)
-    
+        # Prepare the two-dimensional array
+        m, n = len(s1), len(s2)
+        compute_cost = [[0] * (n + 1) for _ in range(m + 1)]
+
+        # Fill the base case values
+        for i in range(1, m + 1):
+            compute_cost[i][0] = compute_cost[i-1][0] + ord(s1[i-1])
+        for j in range(1, n + 1):
+            compute_cost[0][j] = compute_cost[0][j-1] + ord(s2[j-1])
+        
+        # Fill the remaining cells using the Bellman Equation
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                if s1[i-1] == s2[j-1]:
+                    compute_cost[i][j] = compute_cost[i-1][j-1]
+                else:
+                    compute_cost[i][j] = min(
+                        ord(s1[i-1]) + compute_cost[i-1][j],
+                        ord(s2[j-1]) + compute_cost[i][j-1]
+                    )
+        
+        # Return the answer for entire input strings
+        return compute_cost[m][n]
