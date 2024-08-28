@@ -9,7 +9,7 @@ class Solution:
     def findSecretWord(self, words: List[str], master: 'Master') -> None:
         l=0
         i=0
-        while(i<10 and l!=6):
+        while(i<20 and l!=6):
             
             cur=words[random.randint(0, len(words)-1)]
            
