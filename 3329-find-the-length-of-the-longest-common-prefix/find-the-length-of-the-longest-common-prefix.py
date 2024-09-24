@@ -10,6 +10,7 @@ class Solution:
                 s+=cur[j]
                 hs.add(s)
         
+        print(s)
         ans=0
         for i in arr2:
             cur=''
