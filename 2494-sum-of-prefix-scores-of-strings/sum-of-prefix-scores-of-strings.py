@@ -17,19 +17,17 @@ class Solution:
             for ch in word:
                 cur=ch
                 
-                if cur in node.child:
-                    node=node.child[cur]
-                else:
-                    nn=Trie()
-                    node.child[cur]=nn
-                    node=nn
+                if cur not in node.child:
+                    node.child[cur]=Trie()
+                node=node.child[cur]
+                
                 node.count+=1
          
 
 
         ans=[]
         for x in words:
-            node,res=t,0
+            node,res=self.root,0
             for ch in x:
                 if ch in node.child:
                     node=node.child[ch]
