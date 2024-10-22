@@ -26,7 +26,7 @@ class Solution:
             
             res.append(cur_sum)
         res.sort()
-        print(res)
+        
         if len(res)<k:
             return -1
         
