@@ -1,27 +1,21 @@
 class Solution:
     def maxScore(self, s: str) -> int:
+        n=len(s)
+        pf=[0]*n
 
-        res=0
-        t=s.count('1')
-        zeroes=0
-        ones=0
-        print(t)
-        for i in range(len(s)):
-            
-            print(zeroes,ones)
-            if zeroes==0 or t-ones==0:
-                res=max(res,zeroes+(t-ones)-1)
+        if s[n-1]=="1":
+            pf[n-1]=1
+        for i in range(n-2,-1,-1):
+            if s[i]=="1":
+                pf[i]=pf[i+1]+1
             else:
-                res=max(res,zeroes+(t-ones))
-            if s[i]=='0':
-                zeroes+=1
-            else:
-                ones+=1
-        if zeroes==0 or t-ones==0:
-            res=max(res,zeroes+(t-ones)-1)
-        else:
-            res=max(res,zeroes+(t-ones))
-        
-        return res
+                pf[i]=pf[i+1]
 
+        ans=0
+        zero=0
+        for i in range(n-1):
+            if s[i]=="0":
+                zero+=1
+            ans=max(ans,pf[i+1]+zero)
         
+        return ans
