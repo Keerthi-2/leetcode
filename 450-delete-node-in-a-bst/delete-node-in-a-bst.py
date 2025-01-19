@@ -1,34 +1,61 @@
 class Solution:
-    def deleteNode(self, A: Optional[TreeNode], B: int) -> Optional[TreeNode]:
-        if not A:  # If the tree is empty, return None
+    def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
+        if not root:
             return None
-        
-        if B < A.val:  # If the target value is smaller, recurse on the left subtree
-            A.left = self.deleteNode(A.left, B)
-        elif B > A.val:  # If the target value is larger, recurse on the right subtree
-            A.right = self.deleteNode(A.right, B)
-        else:  # Found the node to delete
-            if not A.left and not A.right:  # Case 1: Node has no children
+
+        # Step 1: Initialize parent and current pointers
+        parent = None
+        current = root
+
+        # Step 2: Find the node to delete and its parent
+        while current and current.val != key:
+            parent = current
+            if key < current.val:
+                current = current.left
+            else:
+                current = current.right
+
+        # If the key is not found in the BST
+        if not current:
+            return root
+
+        # Step 3: Handle the three cases of deletion
+
+        # Case 1: Node to delete has no children (leaf node)
+        if not current.left and not current.right:
+            if not parent:  # If deleting the root node
                 return None
-            elif not A.left:  # Case 2: Node has only right child
-                return A.right
-            elif not A.right:  # Case 3: Node has only left child
-                return A.left
-            else:  # Case 4: Node has two children
-                # Find the inorder predecessor (maximum value in the left subtree)
-                temp = A.left
-                prev = None
-                while temp.right:
-                    prev = temp
-                    temp = temp.right
-                
-                # Replace A's value with the inorder predecessor's value
-                A.val = temp.val
-                
-                # Delete the inorder predecessor node
-                if prev:  # If the predecessor has a parent
-                    prev.right = temp.left
-                else:  # If the predecessor is the direct left child of A
-                    A.left = temp.left
-        
-        return A
+            if parent.left == current:
+                parent.left = None
+            else:
+                parent.right = None
+
+        # Case 2: Node to delete has one child
+        elif not current.left or not current.right:
+            child = current.left if current.left else current.right
+            if not parent:  # If deleting the root node
+                return child
+            if parent.left == current:
+                parent.left = child
+            else:
+                parent.right = child
+
+        # Case 3: Node to delete has two children
+        else:
+            # Find the inorder successor (minimum value in the right subtree)
+            successor_parent = current
+            successor = current.right
+            while successor.left:
+                successor_parent = successor
+                successor = successor.left
+
+            # Replace current's value with the successor's value
+            current.val = successor.val
+
+            # Delete the successor node
+            if successor_parent.left == successor:
+                successor_parent.left = successor.right
+            else:
+                successor_parent.right = successor.right
+
+        return root
