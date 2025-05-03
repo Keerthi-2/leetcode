@@ -3,12 +3,12 @@ class Solution:
         
         val=10**9
 
-        for i in range(1,7):
-            cur=i
+        def minrotations(input):
+            cur=input
             top_count=0
             bot_count=0
             valid=True
-
+            val=10**9
             for t,b in zip(tops,bottoms):
                 if t!=cur and b!=cur:
                     valid=False
@@ -21,4 +21,6 @@ class Solution:
 
             if valid:
                 val=min(val,top_count,bot_count)
-        return val if val!=10**9 else -1
+            return val
+        ans=min(minrotations(tops[0]),minrotations(bottoms[0]))
+        return ans if ans!=10**9 else -1
