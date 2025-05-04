@@ -1,13 +1,14 @@
 class Solution:
     def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
-        d={}
+        
 
         res=0
-        arr=[0]*100
-
+        arr={}
+       
         for i,j in dominoes:
-            val=i*10+j if i>j else j*10+i
-            res+=arr[val]
-            arr[val]+=1
+            val=str(i)+"#"+str(j) if i>j else str(j)+'#'+str(i)
+            if val in arr:
+                res+=arr[val]
+            arr[val]=arr.get(val,0)+1
         
         return res
